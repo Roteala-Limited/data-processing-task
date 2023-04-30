@@ -29,6 +29,4 @@ public class PriceModel {
 
     @Field("merchant_group")
     private String merchantGroup;
-
-
 }
