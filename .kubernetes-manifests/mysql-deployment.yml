@@ -20,3 +20,10 @@ spec:
           env:
             - name: MYSQL_ROOT_PASSWORD
               value: admin
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: mysql-persistent-storage
+      volumes:
+        - name: mysql-persistent-storage
+          persistentVolumeClaim:
+            claimName: mysql-pvc

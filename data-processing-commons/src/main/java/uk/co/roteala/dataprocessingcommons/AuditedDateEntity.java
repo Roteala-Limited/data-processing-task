@@ -1,5 +1,6 @@
 package uk.co.roteala.dataprocessingcommons;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -14,10 +15,12 @@ import java.time.Instant;
 public class AuditedDateEntity implements AuditedDate{
     @CreatedDate
     @Field(name = "date_added")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Instant dateAdded;
 
     @LastModifiedDate
     @Field(name = "date_updated")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Instant dateUpdated;
 
     public AuditedDateEntity() {}

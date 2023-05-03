@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Getter
 @Setter
-@ConfigurationProperties(prefix = "")
+@ConfigurationProperties(prefix = "roteala.data.processing.source")
 public class SourceStarterProperties {
 
     private static final String DEFAULT_OUTPUT_TOPIC = "data-processing-client-input";

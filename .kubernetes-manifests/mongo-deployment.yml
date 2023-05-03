@@ -22,3 +22,10 @@ spec:
               value: andrei
             - name: MONGO_INITDB_ROOT_PASSWORD
               value: 28cdc6ad
+          volumeMounts:
+            - mountPath: /data/db
+              name: mongo-persistent-storage
+      volumes:
+        - name: mongo-persistent-storage
+          persistentVolumeClaim:
+            claimName: mongo-pvc

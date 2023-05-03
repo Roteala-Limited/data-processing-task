@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 
 
+@ComponentScan(basePackages = {"uk.co.roteala"})
 @EntityScan(basePackages = {"uk.co.roteala"})
 @EnableJpaRepositories(basePackages = {"uk.co.roteala"})
 @EnableMongoRepositories(basePackages = {"uk.co.roteala"})
