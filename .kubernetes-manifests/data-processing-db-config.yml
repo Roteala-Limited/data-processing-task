@@ -3,11 +3,11 @@ kind: ConfigMap
 metadata:
   name: data-processing-db-config
 data:
-  mysql-host: "172.22.52.104"
+  mysql-host: "172.22.59.72"
   mysql-port: "30584"
   mysql-database: "data_processing"
-  mongo-host: "172.22.52.104"
-  mongo-replicaset-host: "172.22.52.104:30079"
+  mongo-host: "172.22.59.72"
+  mongo-replicaset-host: "172.22.59.72:30079"
   mongo-port: "30079"
   mongo-database: "data_processing"
   mongo-auth-database: "admin"

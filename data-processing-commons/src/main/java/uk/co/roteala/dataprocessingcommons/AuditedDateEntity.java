@@ -15,12 +15,12 @@ import java.time.Instant;
 public class AuditedDateEntity implements AuditedDate{
     @CreatedDate
     @Field(name = "date_added")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+    //@JsonInclude(JsonInclude.Include.NON_NULL)
     private Instant dateAdded;
 
     @LastModifiedDate
     @Field(name = "date_updated")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+    //@JsonInclude(JsonInclude.Include.NON_NULL)
     private Instant dateUpdated;
 
     public AuditedDateEntity() {}

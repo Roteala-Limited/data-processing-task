@@ -17,6 +17,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.web.bind.annotation.*;
 import uk.co.roteala.dataprocessingcommons.model.Client;
+import uk.co.roteala.dataprocessingcommons.repository.ClientRepository;
 import uk.co.roteala.dataprocessingsource.configs.SourceStarterKafkaConfig;
 import uk.co.roteala.dataprocessingsource.dto.ClientRequest;
 import uk.co.roteala.dataprocessingsource.util.SourceStarterKafkaProducer;
