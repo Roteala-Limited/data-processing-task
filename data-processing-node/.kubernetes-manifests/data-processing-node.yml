@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: data-processing-source
+  name: data-processing-node
   labels:
-    app: data-processing-source
+    app: data-processing-node
 spec:
-  replicas: 1
+  replicas: 2
   template:
     metadata:
-      name: data-processing-source
+      name: data-processing-node
       labels:
-        app: data-processing-source
+        app: data-processing-node
     spec:
       containers:
-        - name: data-processing-source
-          image: data-processing-source
+        - name: data-processing-node
+          image: data-processing-node
           imagePullPolicy: IfNotPresent
           env:
             - name: KUBERNETES_NAMESPACE
@@ -87,7 +87,14 @@ spec:
                 configMapKeyRef:
                   name: data-processing-db-config
                   key: mongo-auth-database
+          volumeMounts:
+            - mountPath: /data/blockchain
+              name: blockchain-storage
+      volumes:
+        - name: blockchain-storage
+          persistentVolumeClaim:
+            claimName: blockchain-pvc
       restartPolicy: Always
   selector:
     matchLabels:
-      app: data-processing-source
+      app: data-processing-node

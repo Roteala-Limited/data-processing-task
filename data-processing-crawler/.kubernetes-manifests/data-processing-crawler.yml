@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: data-processing-source
+  name: data-processing-crawler
   labels:
-    app: data-processing-source
+    app: data-processing-crawler
 spec:
   replicas: 1
   template:
     metadata:
-      name: data-processing-source
+      name: data-processing-crawler
       labels:
-        app: data-processing-source
+        app: data-processing-crawler
     spec:
       containers:
-        - name: data-processing-source
-          image: data-processing-source
+        - name: data-processing-crawler
+          image: data-processing-crawler
           imagePullPolicy: IfNotPresent
           env:
             - name: KUBERNETES_NAMESPACE
@@ -90,4 +90,4 @@ spec:
       restartPolicy: Always
   selector:
     matchLabels:
-      app: data-processing-source
+      app: data-processing-crawler

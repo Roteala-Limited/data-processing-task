@@ -7,14 +7,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="data-processing-source" />
+        <module name="data-processing-crawler" />
         <module name="data-processing-commons" />
+        <module name="data-processing-source" />
+        <module name="data-processing-node" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="data-processing-commons" options="-parameters" />
+      <module name="data-processing-crawler" options="-parameters" />
+      <module name="data-processing-node" options="-parameters" />
       <module name="data-processing-source" options="-parameters" />
       <module name="data-processing-task" options="" />
     </option>
