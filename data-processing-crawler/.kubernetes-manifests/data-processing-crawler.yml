@@ -87,6 +87,13 @@ spec:
                 configMapKeyRef:
                   name: data-processing-db-config
                   key: mongo-auth-database
+          volumeMounts:
+            - mountPath: /data/peers
+              name: crawler-storage
+      volumes:
+        - name: crawler-storage
+          persistentVolumeClaim:
+            claimName: crawler-pvc
       restartPolicy: Always
   selector:
     matchLabels:

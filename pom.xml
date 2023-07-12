@@ -206,7 +206,7 @@
     <modules>
         <module>data-processing-commons</module>
         <module>data-processing-source</module>
-        <module>data-processing-node</module>
+        <module>data-processing-processor</module>
         <module>data-processing-crawler</module>
     </modules>
 

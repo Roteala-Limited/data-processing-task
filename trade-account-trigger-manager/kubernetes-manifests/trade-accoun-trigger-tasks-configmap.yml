@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: trade-account-trigger-tasks
+  labels:
+    project: velocity
+data:
+  application.yaml: |-
+    velocity:
+      trigger:
+        pfac:
+         grid-size: 1
+         worker-step: 
+          application-name: trade-account-trigger-worker
+          image-name: "trade-account-trigger-worker:latest"

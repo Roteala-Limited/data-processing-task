@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ignite-cluster-service
+spec:
+  selector:
+    app: my-pods
+  ports:
+    - name: pod-port
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-pods-deployment
+spec:
+  replicas: <REPLICAS_COUNT>
+  selector:
+    matchLabels:
+      app: my-pods
+  template:
+    metadata:
+      labels:
+        app: my-pods
+    spec:
+      containers:
+        - name: my-pod
+          image: my-container-image
+          ports:
+            - containerPort: 8080
+  

@@ -1,0 +1,9 @@
+
+[
+java:S1610"9Convert the abstract class "BaseModel" into an interface.(„®Σÿÿÿÿÿ8ώΖ­1
+X
+java:S1128"6Remove this unused import 'lombok.AllArgsConstructor'.(΄Ύφωÿÿÿÿ8™—–¬1
+R
+java:S1128"5Remove this unused import 'lombok.EqualsAndHashCode'.(Μΰ‰ς8¨Α’¬1
+R
+java:S1128"5Remove this unused import 'lombok.NoArgsConstructor'.(Έ¨›8—–¬1

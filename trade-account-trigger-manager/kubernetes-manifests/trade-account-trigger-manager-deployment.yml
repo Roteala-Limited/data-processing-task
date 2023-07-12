@@ -1,0 +1,84 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trade-account-trigger-manager
+  labels:
+    app: trade-account-trigger-manager
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: trade-account-trigger-manager
+      labels:
+        app: trade-account-trigger-manager
+    spec:
+      serviceAccountName: deployer-admin-sa
+      containers:
+        - name: trade-account-trigger-manager
+          image: trade-account-trigger-manager
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: KUBERNETES_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: "metadata.namespace"
+            - name: SPRING_PROFILES_ACTIVE
+              value: "kubernetes"
+            - name: KAFKA_SERVICE_HOST
+              value: 'broker'
+            - name: SPRING.KAFKA.BOOTSTRAP-SERVERS
+              value: 'broker:9092'
+            - name: MYSQL_SERVICE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: velocity-database
+                  key: mysql-username
+            - name: MYSQL_SERVICE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: velocity-database
+                  key: mysql-password
+            - name: MYSQL_SERVICE_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: velocity-database
+                  key: mysql-host
+            - name: MYSQL_SERVICE_PORT
+              value: '3306'
+            - name: MYSQL_SERVICE_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: velocity-database
+                  key: mysql-database
+            - name: MONGO_SERVICE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: velocity-database
+                  key: mongo-username
+            - name: MONGO_SERVICE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: velocity-database
+                  key: mongo-password
+            - name: MONGO_SERVICE_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: velocity-database
+                  key: mongo-host
+            - name: REPLICASET_MONGO_SERVICE_HOST
+              value: '10.107.1.202:27017'
+            - name: MONGO_SERVICE_PORT
+              value: '27017'
+            - name: MONGO_SERVICE_DATABASE
+              value: 'dev_global_pfac_enterprise'
+            - name: MONGO_SERVICE_AUTH_DATABASE
+              value: 'admin'
+            - name: VELOCITY_ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: velocity-params
+                  key: velocity-env
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: trade-account-trigger-manager
